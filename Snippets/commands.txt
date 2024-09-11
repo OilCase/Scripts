@@ -1,0 +1,5 @@
+export KUBECONFIG=/etc/kubernetes/admin.conf
+
+kubectl get nodes -o wide
+
+kubectl get pods -n kube-system
