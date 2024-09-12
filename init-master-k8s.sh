@@ -36,7 +36,7 @@ sudo systemctl enable docker
 sudo systemctl start docker
 
 # Инициализация кластера на мастер-узле (если это мастер)
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+sudo kubeadm init --pod-network-cidr=10.8.0.0/16 --apiserver-advertise-address=10.8.0.22
 
 # Настраиваем kubectl для текущего пользователя
 mkdir -p $HOME/.kube
