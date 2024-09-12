@@ -10,18 +10,19 @@ sudo apt-get update && sudo apt-get upgrade -y
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 grep -q '^vm.swappiness=10' /etc/sysctl.conf || echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
+sudo sed -i '/swap/s/^/#/' /etc/fstab
 
 
 # Устанавливаем необходимые пакеты для Kubernetes
 sudo apt-get install -y apt-transport-https ca-certificates curl
 
 # Добавляем GPG ключ для Kubernetes репозитория
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.23/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
 
 # Добавляем Kubernetes репозиторий
 sudo bash -c 'cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /
+deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.23/deb/ /
 EOF'
 
 # Обновляем пакеты и устанавливаем kubelet, kubeadm и kubectl

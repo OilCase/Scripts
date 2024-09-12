@@ -1,0 +1,6 @@
+И вы разворачиваете приложение Manabu:
+
+$ kubectl create -f https://raw.githubusercontent.com/manabusakai/k8s-hello-world/master/kubernetes/deployment.yml
+$ kubectl create -f https://raw.githubusercontent.com/manabusakai/k8s-hello-world/master/kubernetes/service.yml
+
+Это простое приложение, которое выводит на веб-странице имя хоста текущего пода.
